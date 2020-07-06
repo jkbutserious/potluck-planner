@@ -6,6 +6,6 @@ export class Recipe {
   }
 
   addIngredient(newIngredient) {
-    this.ingredients.push('TEST');
+    this.ingredients.push(newIngredient);
   }
 }

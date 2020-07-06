@@ -8,11 +8,11 @@ describe("Event Object", () => {
   })
 
   test("create event Object", () => {
-    expect(reusableEvent.eventName).toEqual("This Event")
-    expect(reusableEvent.creator).toEqual("Tyson")
-    expect(reusableEvent.desc).toEqual("description of event")
-    expect(reusableEvent.location).toEqual("Portland, OR")
-    expect(reusableEvent.dateTime).toEqual("07/06/2020 12:00PM")
-    expect(reusableEvent.attendees).toEqual(["Tyson"])
+    expect(reusableEvent.eventName).toEqual("This Event");
+    expect(reusableEvent.creator).toEqual("Tyson");
+    expect(reusableEvent.desc).toEqual("description of event");
+    expect(reusableEvent.location).toEqual("Portland, OR");
+    expect(reusableEvent.dateTime).toEqual("07/06/2020 12:00PM");
+    expect(reusableEvent.attendees).toEqual(["Tyson"]);
   })
 })

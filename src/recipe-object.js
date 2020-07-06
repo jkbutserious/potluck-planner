@@ -8,4 +8,8 @@ export class Recipe {
   addIngredient(newIngredient) {
     this.ingredients.push(newIngredient);
   }
+
+  addSteps(stepNum, stepText) {
+    this.instructions.push('Step ' + stepNum + ': ' + stepText);
+  }
 }

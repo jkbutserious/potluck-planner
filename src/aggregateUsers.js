@@ -1,6 +1,7 @@
 export class AggregateUsers {
   constructor() {
     this.users = [];
+    this.currentId = 0;
   }
 
   addUser(user) {
@@ -8,7 +9,7 @@ export class AggregateUsers {
     this.users.push(user);
   }
 
-  assignUserId(user){
+  assignUserId(){
     this.currentId += 1;
     return this.currentId;
   }

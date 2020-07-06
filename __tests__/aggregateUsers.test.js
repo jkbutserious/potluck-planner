@@ -20,7 +20,7 @@ describe('instantiate new AggregateUser object and add users', () => {
   });
 
   test('assigns id to user object when added to AggregateUsers', ()=>{
-    userIndex.assignUserId(reusableUser);
+    userIndex.addUser(reusableUser);
     expect(reusableUser.id).toEqual(1);
   })
 });

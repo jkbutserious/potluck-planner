@@ -1,6 +1,6 @@
 export class AggregateUsers {
   constructor() {
-    // this.users = [];
+    this.users = [];
   }
 
   // addUser(user) {

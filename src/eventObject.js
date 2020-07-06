@@ -9,7 +9,7 @@ export class Event {
   }
 
   addNewUser(user){
-    this.attendees.push(user)
+    this.attendees.push(user);
   }
 }
 

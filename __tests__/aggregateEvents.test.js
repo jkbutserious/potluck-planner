@@ -30,6 +30,6 @@ describe('Aggregate Events and related object methods', ()=>{
     reusableEventIndex.addEvent(reusableEvent);
     reusableEventIndex.addEvent(reusableEvent2);
     reusableEventIndex.deleteEvent(reusableEvent.id);
-    expect(reusableEventIndex.events).toEqual([reusableEvent2]);
+    expect(reusableEventIndex.events).toEqual([undefined, reusableEvent2]);
   })
 })

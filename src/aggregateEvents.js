@@ -14,7 +14,15 @@ export class AggregateEvents {
     return this.currentId;
   }
 
-  deleteEvent(){
-    
+  deleteEvent(id){
+    for(let i=0; i<this.events.length; i++){
+      if(this.events[i]){
+        if(this.events[i].id == id){
+          delete this.events[i];
+          return true;
+        }
+      }
+    };
+    return false;
   }
 }

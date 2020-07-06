@@ -1,21 +1,20 @@
 import { AggregateRecipes } from './../src/aggregateRecipes.js';
 
-describe('instantiate new AggregateRecipe object', () => {
-  let appRecipeIndex;
+describe('instantiate new AggregateRecipe object and add recipes', () => {
+  let RecipeIndex;
   let recipe;
 
   beforeEach(() => {
-    appRecipeIndex = new AggregateRecipes();
+    RecipeIndex = new AggregateRecipes();
     recipe = 'apple pie'
   });
 
   test('should correctly instantiate new AggregateRecipe object', () => {
-    expect(appRecipeIndex.recipes).toEqual([]);
+    expect(RecipeIndex.recipes).toEqual([]);
   });
 
   test('should correctly add recipe to AggregateRecipe object', () => {
-    appRecipeIndex.addRecipe(recipe);
-    expect(appRecipeIndex.recipes).toEqual(['apple pie']);
+    RecipeIndex.addRecipe(recipe);
+    expect(RecipeIndex.recipes).toEqual(['apple pie']);
   });
-
 });

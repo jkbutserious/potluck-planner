@@ -1,9 +1,9 @@
 export class AggregateUsers {
   constructor() {
-    this.users = [];
+    // this.users = [];
   }
 
-  addUser(user) {
-    this.users.push(user);
-  }
+  // addUser(user) {
+  //   this.users.push(user);
+  // }
 }

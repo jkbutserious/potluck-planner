@@ -4,6 +4,6 @@ export class AggregateRecipes {
   }
 
   addRecipe(recipe) {
-    // this.recipes.push(recipe);
+    this.recipes.push(recipe);
   }
 }

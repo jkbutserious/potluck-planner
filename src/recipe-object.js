@@ -4,4 +4,8 @@ export class Recipe {
     this.ingredients = [];
     this.instructions = [];
   }
+
+  addIngredient(newIngredient) {
+    this.ingredients.push('TEST');
+  }
 }

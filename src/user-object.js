@@ -1,7 +1,7 @@
 export class User {
-  constructor(name, recipes, aboutMe, location) {
+  constructor(name, aboutMe, location) {
     this.name = name;
-    this.recipes = recipes;
+    this.recipes = [];
     this.aboutMe = aboutMe;
     this.location = location;
   }

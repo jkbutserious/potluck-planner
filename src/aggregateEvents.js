@@ -24,9 +24,15 @@ export class AggregateEvents {
       }
     };
     return false;
+
+
+    
   }
 
   scrubUser(id){
 
   }
+
+
+  
 }

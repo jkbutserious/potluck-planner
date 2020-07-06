@@ -1,9 +1,9 @@
 export class AggregateRecipes {
-  // constructor() {
-  //   this.recipes = [];
-  // }
+  constructor() {
+    this.recipes = [];
+  }
 
-  // addRecipe(recipe) {
-  //   this.recipes.push(recipe);
-  // }
+  addRecipe(recipe) {
+    this.recipes.push(recipe);
+  }
 }

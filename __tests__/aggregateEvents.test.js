@@ -1,5 +1,6 @@
 import {AggregateEvents} from './../src/aggregateEvents.js';
 import {Event} from './../src/eventObject.js'
+import { User } from '../src/user-object.js';
 
 describe('Aggregate Events and related object methods', ()=>{
   let reusableEventIndex;
@@ -34,6 +35,14 @@ describe('Aggregate Events and related object methods', ()=>{
   })
 
   test('remove user from all events',()=>{
-
+    let user = new User("testName", "testDesc", "testLocation");
+    let event2 = new Event("secondEvent", "Not Tyson", "description of second event", "Salem, OR", "07/06/2020 6:00PM");
+    event2.addAttendee(user);
+    reusableEvent.addAttendee(user);
+    reusableEventIndex.addEvent(reusableEvent);
+    reusableEventIndex.addEvent(event2);
+    reusableEventIndex.scrubUser(user);
+    expect(reusableEvent.attendees).toEqual([]);
+    expect(event2.attendees).toEqual([]);
   })
 })

@@ -8,7 +8,7 @@ export class Event {
     this.attendees = [creator];
   }
 
-  addNewUser(user){
+  addAttendee(user){
     this.attendees.push(user);
   }
 }

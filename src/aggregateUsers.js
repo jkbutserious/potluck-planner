@@ -3,7 +3,7 @@ export class AggregateUsers {
     this.users = [];
   }
 
-  // addUser(user) {
-  //   this.users.push(user);
-  // }
+  addUser(user) {
+    // this.users.push(user);
+  }
 }

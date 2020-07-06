@@ -12,7 +12,7 @@ _Enter text here_
 * Complete: Red, False
 
 **Behavior** _The program should save a new event into a new event object_
-* Input: Name: My Birthday, Location: Portland, OR, Date: 00/00/00, Description: lorem ipsum, CreatedBy: Mike Tyson, Attendees: Mike Tyson
+* Input: Name: My Birthday, Location: Portland, OR, DateTime: 00/00/00 00:00, Description: lorem ipsum, CreatedBy: Mike Tyson, Attendees: Mike Tyson
 * Output: {Name: My Birthday, Location: Portland, OR, Date: 00/00/00, Description: lorem ipsum, CreatedBy: Mike Tyson, Attendees: Mike Tyson}
 * Complete: Red, False
 

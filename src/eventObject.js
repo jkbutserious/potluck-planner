@@ -1,9 +1,10 @@
 export class Event {
-  constructor(creator, desc, location, dateTime) {
-    this.creator = creator;
-    this.desc = desc;
-    this.location = location;
-    this.dateTime = dateTime;
-    this.attendees = [creator]
+  constructor() {
+    //this.eventName = eventName
+    //this.creator = creator;
+    //this.desc = desc;
+    //this.location = location;
+    //this.dateTime = dateTime;
+    //this.attendees = [creator]
   }
 }

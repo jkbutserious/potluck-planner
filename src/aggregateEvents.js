@@ -5,7 +5,7 @@ export class AggregateEvents {
   }
 
   addEvent(event) {
-    event.id = this.assignEventId()
+    event.id = this.assignEventId();
     this.events.push(event);
   }
 
@@ -26,7 +26,7 @@ export class AggregateEvents {
     return false;
   }
 
-  scrubUser(){
+  scrubUser(id){
 
   }
 }

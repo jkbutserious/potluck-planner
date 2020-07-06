@@ -14,7 +14,8 @@ describe('instantiate new AggregateRecipe object', () => {
   });
 
   test('should correctly add recipe to AggregateRecipe object', () => {
-    expect(appRecipeIndex.addRecipe(recipe)).toEqual(['apple pie']);
+    appRecipeIndex.addRecipe(recipe);
+    expect(appRecipeIndex.recipes).toEqual(['apple pie']);
   });
 
 });

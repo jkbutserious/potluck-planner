@@ -4,6 +4,6 @@ export class AggregateUsers {
   }
 
   addUser(user) {
-    // this.users.push(user);
+    this.users.push(user);
   }
 }

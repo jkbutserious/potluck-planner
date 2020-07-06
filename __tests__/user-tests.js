@@ -1,7 +1,7 @@
+import { User } from '../src/user-object.js'
 describe('should include all tests related to the user object', () => {
   let userObject;
-  import { User } from '../src/user-object.js'
- 
+
   beforeEach(() => {
     const description = "Likes long walks on the beach"
     userObject = new User("Kyle", ["Recipe 1", "Recipe 2"], description, "Portland, OR");

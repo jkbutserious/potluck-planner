@@ -15,14 +15,14 @@ export class AggregateUsers {
   }
 
   deleteUser(id){
-    //for(let i=0; i<this.users.length; i++){
-    //  if(this.users[i]){
-    //    if(this.users[i].id == id){
-    //      delete this.users[i];
-    //      return true;
-    //    }
-    //  }
-    //};
-    //return false;
+    for(let i=0; i<this.users.length; i++){
+      if(this.users[i]){
+        if(this.users[i].id == id){
+          delete this.users[i];
+          return true;
+        }
+      }
+    };
+    return false;
   }
 }

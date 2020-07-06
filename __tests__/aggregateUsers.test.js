@@ -23,4 +23,12 @@ describe('instantiate new AggregateUser object and add users', () => {
     userIndex.addUser(reusableUser);
     expect(reusableUser.id).toEqual(1);
   })
+
+  test('deletes user from AggregateUserss', ()=>{
+    let user2 = new User('Kyle', 'testAboutMe', 'Seattle')
+    userIndex.addUser(reusableUser);
+    userIndex.addUser(user2);
+    userIndex.deleteUser(reusableUser.id);
+    expect(userIndex.users).toEqual([undefined, user2]);
+  })
 });

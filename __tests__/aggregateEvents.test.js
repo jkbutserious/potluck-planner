@@ -24,4 +24,12 @@ describe('Aggregate Events and related object methods', ()=>{
     reusableEventIndex.addEvent(reusableEvent);
     expect(reusableEvent.id).toEqual(1);
   })
+
+  test('deletes event from AggregateEvents', ()=>{
+    let reusableEvent2 = new Event("secondEvent", "Not Tyson", "description of second event", "Salem, OR", "07/06/2020 6:00PM");
+    reusableEventIndex.addEvent(reusableEvent);
+    reusableEventIndex.addEvent(reusableEvent2);
+    reusableEventIndex.deleteEvent(reusableEvent.id);
+    expect(reusableEventIndex.events).toEqual([reusableEvent2]);
+  })
 })

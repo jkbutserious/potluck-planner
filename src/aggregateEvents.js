@@ -13,4 +13,8 @@ export class AggregateEvents {
     this.currentId += 1;
     return this.currentId;
   }
+
+  deleteEvent(){
+    
+  }
 }

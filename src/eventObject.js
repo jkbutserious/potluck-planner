@@ -5,6 +5,11 @@ export class Event {
     this.desc = desc;
     this.location = location;
     this.dateTime = dateTime;
-    this.attendees = [creator]
+    this.attendees = [creator];
+  }
+
+  addNewUser(user){
+    
   }
 }
+

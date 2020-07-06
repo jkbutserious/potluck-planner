@@ -12,12 +12,4 @@ describe ('Recipe', () => {
     expect(myRecipe.ingredients).toEqual([]);
     expect(myRecipe.instructions).toEqual([]);
   });
-
-  test('Should allow users to add ingredients to the ingredients array', () => {
-    myRecipe.addIngredient('ground beef');
-    myRecipe.addIngredient('tomato sauce');
-    myRecipe.addIngredient('magic');
-    
-    expect(myRecipe.ingredients).toEqual(['ground beef', 'tomato sauce', 'magic']);
-  })
 });

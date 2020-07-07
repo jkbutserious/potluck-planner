@@ -13,4 +13,8 @@ export class AggregateRecipes {
     this.currentId += 1;
     return this.currentId;
   }
+
+  deleteRecipe(id){
+    
+  }
 }

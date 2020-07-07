@@ -23,4 +23,12 @@ describe('instantiate new AggregateRecipe object and add recipes', () => {
     RecipeIndex.addRecipe(recipe);
     expect(recipe.id).toEqual(1);
   })
+
+  test('deletes recipe from AggregateRecipes', ()=>{
+    let recipe2 = new Recipe('Pot Roast');
+    RecipeIndex.addRecipe(recipe);
+    RecipeIndex.addRecipe(recipe2);
+    RecipeIndex.deleteRecipe(recipe.id);
+    expect(RecipeIndex.recipes).toEqual([undefined, recipe2]);
+  })
 });

@@ -26,7 +26,7 @@ describe('should include all tests related to the user object', () => {
     expect(userObject.recipes).toEqual([recipe]);
   });
 
-  test("remove user object from the attendee array", ()=>{
+  test("remove recipe object from the user array", ()=>{
     let recipe1 = new Recipe("pot Roast");
     let recipe2 = new Recipe("pizza");
     recipeIndex.addRecipe(recipe1);

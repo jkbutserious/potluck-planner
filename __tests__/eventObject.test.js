@@ -32,6 +32,6 @@ describe("Event Object", ()=>{
     reusableEvent.addAttendee(user1);
     reusableEvent.addAttendee(user2);
     reusableEvent.removeAttendee(user1.id);
-    expect(reusableEvent.attendees).toEqual([undefined, user2])
+    expect(reusableEvent.attendees).toEqual(["Tyson", undefined, user2])
   })
 })

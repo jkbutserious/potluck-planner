@@ -13,7 +13,15 @@ export class Event {
   }
 
   removeAttendee(userId){
-    
+    for(let i=0; i<this.attendees.length; i++){
+      if(this.attendees[i]){
+        if(this.attendees[i].id == userId){
+          delete this.attendees[i];
+          return true;
+        }
+      }
+    };
+    return false;
   }
 }
 

@@ -1,3 +1,12 @@
+/* General element styling */
+button {
+  border: 1px solid black;
+  color: black !important;
+
+}
+
+
+
 /* Login/Sign-up Page Styles */
 
 #login-overall-container {

@@ -5,4 +5,8 @@ export class User {
     this.aboutMe = aboutMe;
     this.location = location;
   }
+
+  addRecipe(recipe){
+
+  }
 }

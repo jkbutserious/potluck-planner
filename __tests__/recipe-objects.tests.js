@@ -4,7 +4,7 @@ describe ('Recipe', () => {
   let myRecipe;
 
   beforeEach(() => {
-    myRecipe = new Recipe()
+    myRecipe = new Recipe('')
   })
 
   test('Should correctly create a recipe object that contains a recipe name, ingredients, and cooking instructions', () => {

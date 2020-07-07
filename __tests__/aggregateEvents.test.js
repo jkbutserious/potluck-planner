@@ -1,7 +1,7 @@
 import {AggregateEvents} from './../src/aggregateEvents.js';
 import {Event} from './../src/eventObject.js'
-import { User } from '../src/user-object.js';
-import { AggregateUsers } from '../src/aggregateUsers.js';
+//import { User } from '../src/user-object.js';
+//import { AggregateUsers } from '../src/aggregateUsers.js';
 
 describe('Aggregate Events and related object methods', ()=>{
   let reusableEventIndex;
@@ -35,17 +35,17 @@ describe('Aggregate Events and related object methods', ()=>{
     expect(reusableEventIndex.events).toEqual([undefined, event2]);
   })
 
-  test('remove user from all events',()=>{
-    let user = new User("testName", "testDesc", "testLocation");
-    let event2 = new Event("secondEvent", "Not Tyson", "description of second event", "Salem, OR", "07/06/2020 6:00PM");
-    let aggregateUser = new AggregateUsers();
-    aggregateUser.addUser(user);
-    event2.addAttendee(user);
-    reusableEvent.addAttendee(user);
-    reusableEventIndex.addEvent(reusableEvent);
-    reusableEventIndex.addEvent(event2);
-    reusableEventIndex.scrubUser(user.id);
-    expect(reusableEvent.attendees).toEqual([]);
-    expect(event2.attendees).toEqual([]);
-  })
+  //test('remove user from all events',()=>{
+  //  let user = new User("testName", "testDesc", "testLocation");
+  //  let event2 = new Event("secondEvent", "Not Tyson", "description of second event", "Salem, OR", "07/06/2020 6:00PM");
+  //  let aggregateUser = new AggregateUsers();
+  //  aggregateUser.addUser(user);
+  //  event2.addAttendee(user);
+  //  reusableEvent.addAttendee(user);
+  //  reusableEventIndex.addEvent(reusableEvent);
+  //  reusableEventIndex.addEvent(event2);
+  //  reusableEventIndex.scrubUser(user.id);
+  //  expect(reusableEvent.attendees).toEqual([]);
+  //  expect(event2.attendees).toEqual([]);
+  //})
 })

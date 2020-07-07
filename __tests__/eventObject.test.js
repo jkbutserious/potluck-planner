@@ -1,4 +1,6 @@
 import {Event} from '../src/eventObject.js';
+import { User } from '../src/user-object.js';
+import { AggregateUsers } from '../src/aggregateUsers.js';
 
 describe("Event Object", ()=>{
   let reusableEvent;
@@ -21,6 +23,15 @@ describe("Event Object", ()=>{
     expect(reusableEvent.attendees).toEqual(["Tyson", "newUser"]);
   })
 
-  //test("remove user object to the attendee array", ()=>{
-  //})
+  test("remove user object from the attendee array", ()=>{
+    let userIndex = new AggregateUsers();
+    let user1 = new User("testName", "testDesc", "testLocation");
+    let user2 = new User("testName2", "testDesc2", "testLocation2");
+    userIndex.addUser(user1);
+    userIndex.addUser(user2);
+    reusableEvent.addAttendee(user1);
+    reusableEvent.addAttendee(user2);
+    reusableEvent.removeAttendee(user1.id);
+    expect(reusableEvent.attendees).toEqual(["Tyson", undefined, user2])
+  })
 })

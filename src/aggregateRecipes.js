@@ -15,6 +15,14 @@ export class AggregateRecipes {
   }
 
   deleteRecipe(id){
-    
+    for(let i=0; i<this.recipes.length; i++){
+      if(this.recipes[i]){
+        if(this.recipes[i].id == id){
+          delete this.recipes[i];
+          return true;
+        }
+      }
+    };
+    return false;
   }
 }

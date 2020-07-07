@@ -1,15 +1,14 @@
 import { User } from '../src/user-object.js';
 import { Recipe } from '../src/recipe-object.js';
-import { AggregateRecipes } from '../src/aggregateRecipes.js';
 
 describe('should include all tests related to the user object', () => {
   let userObject;
-  let recipeIndex;
+  let recipe;
 
   beforeEach(() => {
     const description = "Likes long walks on the beach"
     userObject = new User("Kyle", description, "Portland, OR");
-    recipeIndex = new AggregateRecipes();
+    recipe = new Recipe("pot Roast");
   });
 
   test('should properly instantiate new user object', () => {
@@ -20,20 +19,20 @@ describe('should include all tests related to the user object', () => {
   });
 
   test('add a new recipe to the user object', () => {
-    let recipe = new Recipe("pot Roast");
-    recipeIndex.addRecipe(recipe);
     userObject.addRecipe(recipe);
     expect(userObject.recipes).toEqual([recipe]);
   });
 
+  test('assigns id to recipe object when added to user object', ()=>{
+    userObject.addRecipe(recipe);
+    expect(recipe.id).toEqual(1);
+  })
+
   test("remove recipe object from the user array", ()=>{
-    let recipe1 = new Recipe("pot Roast");
     let recipe2 = new Recipe("pizza");
-    recipeIndex.addRecipe(recipe1);
-    recipeIndex.addRecipe(recipe2);
-    userObject.addRecipe(recipe1);
+    userObject.addRecipe(recipe);
     userObject.addRecipe(recipe2);
-    userObject.removeRecipe(recipe1.id);
+    userObject.removeRecipe(recipe.id);
     expect(userObject.recipes).toEqual([undefined, recipe2])
   })
 })

@@ -4,18 +4,25 @@
   <title>Potluck Planner</title>
 </head>
 <body>
-  <div id="header">
-    <h1>Potluck Planner</h1>
-  </div>
+  <div id="overall-container">
+    <div id="header-container">
+      <h1>Potluck Planner</h1>
+      <a id="home" class="active">Home</a>
+      <a id="user-profile">My Profile</a>
+      <a id="add-event">Add Event</a>
+      <a id="about">About</a>
+    </div>
 
-  <div id="login-overall-container">
-    <div id="login-container">
-      <h4>Login:</h4>
-      <form>
-        <input type="text" placeholder="Name">
-        <button class="login-button">login</button>
-        <button class="join-button"><a href='./new-user.html'>join</a></button>
-      </form>
+    <div id="content-container">
+      <div id="main-container">
+        <h4>Login:</h4>
+        <form id="login-page-form">
+          <input type="text" placeholder="Name" id="username">
+          <button class="login-button">login</button>
+          <div id="not-valid-user"><!--Im sorry no account matches that username, please create a new account-->AN OUTSIDER! This is a private event, you must undergo the rite of initiation (create an account) or leave!</div>
+          <button class="join-button">join</button>
+        </form>
+      </div>
     </div>
   </div>
 </body>

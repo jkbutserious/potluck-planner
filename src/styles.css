@@ -1,0 +1,21 @@
+/* General element styling */
+button {
+  border: 1px solid black;
+  color: black !important;
+
+}
+
+#not-valid-user {
+  color: red;
+  display: none;
+}
+
+/* Login/Sign-up Page Styles */
+
+#login-overall-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}

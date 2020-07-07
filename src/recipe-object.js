@@ -1,6 +1,6 @@
 export class Recipe {
   constructor(name) {
-    this.name = '';
+    this.name = name;
     this.ingredients = [];
     this.instructions = [];
   }

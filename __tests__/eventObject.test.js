@@ -17,7 +17,7 @@ describe("Event Object", ()=>{
   })
 
   test("add user object to the attendee array", ()=>{
-    reusableEvent.addNewUser("newUser");
+    reusableEvent.addAttendee("newUser");
     expect(reusableEvent.attendees).toEqual(["Tyson", "newUser"]);
   })
 

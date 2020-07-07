@@ -20,9 +20,20 @@ describe('should include all tests related to the user object', () => {
   });
 
   test('add a new recipe to the user object', () => {
-    let recipe = new Recipe("potluck");
+    let recipe = new Recipe("pot Roast");
     recipeIndex.addRecipe(recipe);
     userObject.addRecipe(recipe);
     expect(userObject.recipes).toEqual([recipe]);
   });
+
+  test("remove user object from the attendee array", ()=>{
+    let recipe1 = new Recipe("pot Roast");
+    let recipe2 = new Recipe("pizza");
+    recipeIndex.addRecipe(recipe1);
+    recipeIndex.addRecipe(recipe2);
+    userObject.addRecipe(recipe1);
+    userObject.addRecipe(recipe2);
+    userObject.removeRecipe(recipe1.id);
+    expect(userObject.recipes).toEqual([undefined, recipe2])
+  })
 })

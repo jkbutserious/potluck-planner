@@ -25,13 +25,11 @@ export class AggregateEvents {
     };
     return false;
 
-
-    
   }
 
-  scrubUser(id){
-
-  }
+  //scrubUser(id){
+//
+  //}
 
 
   

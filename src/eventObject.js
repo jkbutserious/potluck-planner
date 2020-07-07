@@ -11,5 +11,9 @@ export class Event {
   addAttendee(user){
     this.attendees.push(user);
   }
+
+  removeAttendee(userId){
+    
+  }
 }
 

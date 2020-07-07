@@ -1,7 +1,7 @@
 import {AggregateEvents} from './../src/aggregateEvents.js';
 import {Event} from './../src/eventObject.js'
-import { User } from '../src/user-object.js';
-import { AggregateUsers } from '../src/aggregateUsers.js';
+//import { User } from '../src/user-object.js';
+//import { AggregateUsers } from '../src/aggregateUsers.js';
 
 describe('Aggregate Events and related object methods', ()=>{
   let reusableEventIndex;

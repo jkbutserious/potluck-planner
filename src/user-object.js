@@ -7,6 +7,6 @@ export class User {
   }
 
   addRecipe(recipe){
-
+    this.recipes.push(recipe)
   }
 }

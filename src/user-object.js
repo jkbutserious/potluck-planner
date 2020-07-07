@@ -11,6 +11,14 @@ export class User {
   }
 
   removeRecipe(recipeId){
-    
+    for(let i=0; i<this.recipes.length; i++){
+      if(this.recipes[i]){
+        if(this.recipes[i].id == recipeId){
+          delete this.recipes[i];
+          return true;
+        }
+      }
+    };
+    return false;
   }
 }

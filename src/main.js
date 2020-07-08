@@ -48,12 +48,45 @@ $(document).ready(function() {
 });
 
 
-
+// NEW USER PAGE
 $('#create-user').on("click", function (event) {
   event.preventDefault();
   const newUser = new User($("#name").val(), $("#aboutMe").val(), $("#location").val());
   userdb.addUser(newUser);
+  userdb.currentUser = newUser.id;
   $("#header-container").show();
   $("#content-container").load('user-profile.html');
-  console.log(userdb.users);
+  addLoginDetails(newUser);
+})
+
+function addLoginDetails() {
+  const userDetails = userdb.users[userdb.currentUser];
+  $('#user-profile-name').text(userDetails.name);
+  $('#user-profile-about-me').text(userDetails.aboutMe);
+  $('#user-profile-location').text(userDetails.location);
+  userDetails.recipes.forEach(element => {
+    $("#user-profile-recipe-list").append(`<li>${element.name}</li>`)
+    console.log('works');
+  });
+}
+
+
+$('#update-user').on("click", function (event) {
+  event.preventDefault();
+  userdb.users[userdb.currentUser].name = $("#name").val()
+  userdb.users[userdb.currentUser].aboutMe = $("#aboutMe").val()
+  userdb.users[userdb.currentUser].location = $("#location").val()
+  $("#content-container").load('user-profile.html');
+  addLoginDetails();
+})
+
+
+//user profile
+$('#modify-user').on("click", function (event) {
+  event.preventDefault();
+  
+
+
+  $("#content-container").load('new-user.html');
+  
 })

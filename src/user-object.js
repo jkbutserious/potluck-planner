@@ -5,8 +5,8 @@ export class User {
     this.events = [];
     this.aboutMe = aboutMe;
     this.location = location;
-    this.currentRecipeId = 0;
-    this.currentEventId = 0;
+    this.currentRecipeId = -1;
+    this.currentEventId = -1;
   }
 
   addRecipe(recipe){

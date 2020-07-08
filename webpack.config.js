@@ -22,36 +22,6 @@ module.exports = {
       title: 'index.html',
       template: './src/index.html',
       inject: 'body'
-    }),
-    new HtmlWebpackPlugin({  
-      filename: 'landing-dashboard.html',
-      template: './src/landing-dashboard.html',
-      inject: 'body'
-    }),
-    new HtmlWebpackPlugin({  
-      filename: 'new-user.html',
-      template: './src/new-user.html',
-      inject: 'body'
-    }),
-    new HtmlWebpackPlugin({  
-      filename: 'user-profile.html',
-      template: './src/user-profile.html',
-      inject: 'body'
-    }),
-    new HtmlWebpackPlugin({  
-      filename: 'add-recipe.html',
-      template: './src/add-recipe.html',
-      inject: 'body'
-    }),
-    new HtmlWebpackPlugin({  
-      filename: 'add-event-page.html',
-      template: './src/add-event-page.html',
-      inject: 'body'
-    }),
-    new HtmlWebpackPlugin({  
-      filename: 'login-signup-page.html',
-      template: './src/login-signup-page.html',
-      inject: 'body'
     })
   ],
   module: {

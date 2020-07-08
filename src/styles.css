@@ -5,6 +5,10 @@ button {
 
 }
 
+.collapsed-event {
+  display: none;
+}
+
 #not-valid-user {
   color: red;
   display: none;
@@ -18,4 +22,13 @@ button {
   height: 100vh;
   align-items: center;
   justify-content: center;
+}
+
+#header-container,
+#new-user-overall-container,
+#user-profile-overall-container,
+#landing-dashboard-overall-container,
+#add-recipe-overall-container,
+#add-event-page{
+  display: none;
 }

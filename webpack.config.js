@@ -22,6 +22,10 @@ module.exports = {
       title: 'index',
       template: './src/index.html',
       inject: 'body'
+    }),
+    new HtmlWebpackPlugin({  // Also generate a test.html
+      filename: 'landing-dashboard.html',
+      template: './src/landing-dashboard.html'
     })
   ],
   module: {

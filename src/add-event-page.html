@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Events</title>
-</head>
-<body>
-  <h4>Enter your event details below</h4>
-  <form id="new-event-form">
-    <select name="month" id="-new-event-form-month">
-      <option value="1">January</option>
-      <option value="2">February</option>
-      <option value="3">March</option>
-      <option value="4">April</option>
-      <option value="5">May</option>
-      <option value="6">June</option>
-      <option value="7">July</option>
-      <option value="8">August</option>
-      <option value="9">September</option>
-      <option value="10">October</option>
-      <option value="11">November</option>
-      <option value="12">December</option>
-    </select>
+<h4>Enter your event details below</h4>
+<form id="new-event-form">
+  <label for="eventDate">Event Date:</label>
+  <input type="date" id="eventDate">
+  <input type="text" id="eventName" placeholder="Event Name">
+  <input type="text" id="eventLocation" placerholder="Event Location">
+  <input type="text" id="eventDesc" placeholder="Event Description">
 
-    <input type="text" placeholder="Day">
-    <input type="text" placeholder="Year">
-    <input type="text" placeholder="Event Description">
-
-    <button>Add your event!</button>
-  </form>
-  
-</body>
-</html>
+  <button>Add your event!</button>
+</form>

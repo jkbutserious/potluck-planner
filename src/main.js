@@ -5,18 +5,18 @@ import $ from 'jquery';
 import { AggregateUsers } from './aggregateUsers.js';
 import { User } from './user-object';
 
-let userdb = new AggregateUsers();
+const userdb = new AggregateUsers();
 
 $(document).ready(function() {
 // TOP NAV LOADERS
   $('#home').click(function() {
-    $('#content-container').load('landing-dashboard.html');
+   // $('#content-container').load('landing-dashboard.html');
   });
   $('#user-profile').click(function() {
-    $('#content-container').load('user-profile.html');
+    //$('#content-container').load('user-profile.html');
   });
   $('#add-event').click(function() {
-    $('#content-container').load('add-event-page.html');
+    //$('#content-container').load('add-event-page.html');
   });
   //  $('#about').click(function() {
   //  $('#content-container').load();
@@ -34,7 +34,7 @@ $(document).ready(function() {
     });
     if (valid === true) {
       $('#header-container').show();
-      $('#content-container').load('landing-dashboard.html');
+      //$('#content-container').load('landing-dashboard.html');
     } else {
       $('#not-valid-user').fadeIn();
     }
@@ -42,51 +42,39 @@ $(document).ready(function() {
 
   $('.join-button').click(function(event) {
     event.preventDefault();
-    $('#content-container').load('new-user.html');
+    //$('#content-container').load('new-user.html');
     
   });
 });
 
 
 // NEW USER PAGE
-$('#create-user').on("click", function (event) {
+$('#create-user').on("click", function(event) {
   event.preventDefault();
   const newUser = new User($("#name").val(), $("#aboutMe").val(), $("#location").val());
   userdb.addUser(newUser);
   userdb.currentUser = newUser.id;
   $("#header-container").show();
-  $("#content-container").load('user-profile.html');
-  addLoginDetails(newUser);
+  //$("#content-container").load('user-profile.html', addLoginDetails);
 })
 
 function addLoginDetails() {
   const userDetails = userdb.users[userdb.currentUser];
-  $('#user-profile-name').text(userDetails.name);
-  $('#user-profile-about-me').text(userDetails.aboutMe);
-  $('#user-profile-location').text(userDetails.location);
+  $('#user-profile-name').html(userDetails.name);
+  $('#user-profile-about-me').html(userDetails.aboutMe);
+  $('#user-profile-location').html(userDetails.location);
   userDetails.recipes.forEach(element => {
     $("#user-profile-recipe-list").append(`<li>${element.name}</li>`)
-    console.log('works');
   });
 }
-
 
 $('#update-user').on("click", function (event) {
   event.preventDefault();
   userdb.users[userdb.currentUser].name = $("#name").val()
   userdb.users[userdb.currentUser].aboutMe = $("#aboutMe").val()
   userdb.users[userdb.currentUser].location = $("#location").val()
-  $("#content-container").load('user-profile.html');
+  //$("#content-container").load('user-profile.html');
   addLoginDetails();
 })
 
 
-//user profile
-$('#modify-user').on("click", function (event) {
-  event.preventDefault();
-  
-
-
-  $("#content-container").load('new-user.html');
-  
-})

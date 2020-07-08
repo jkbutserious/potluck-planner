@@ -11,7 +11,7 @@ export class User {
 
   addRecipe(recipe){
     recipe.id = this.assignRecipeId();
-    this.recipes.push(recipe)
+    this.recipes.push(recipe);
   }
 
   assignRecipeId(){
@@ -27,7 +27,7 @@ export class User {
           return true;
         }
       }
-    };
+    }
     return false;
   }
 
@@ -49,7 +49,7 @@ export class User {
           return true;
         }
       }
-    };
+    }
     return false;
   }
 }

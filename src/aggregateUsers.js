@@ -22,7 +22,7 @@ export class AggregateUsers {
           return true;
         }
       }
-    };
+    }
     return false;
   }
 }

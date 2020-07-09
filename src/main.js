@@ -218,8 +218,6 @@ function addDashboardDetails() {
   });
 }
 
-
-
 $("#all-events-list").on("click", "li", function(event){
   event.preventDefault();
   $("#all-events-list li").children().hide();

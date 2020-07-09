@@ -231,6 +231,7 @@ $("#all-events-list").on("click", "li", function(event){
     <p>Location: ${userEvent.location}</p><br>
     <p>Date: ${userEvent.dateTime}</p>
     <button id='${idSplit(rawID).join(',')}'>modify</button>
+    <div class="fb-share-button" data-href="https://github.com/hubba180/potluck-planner" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fhubba180%2Fpotluck-planner&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
     `);
 });
 
@@ -245,6 +246,7 @@ $("#your-events-list").on("click", "li", function(event){
     <p>Location: ${userEvent.location}</p><br>
     <p>Date: ${userEvent.dateTime}</p>
     <button id='${userEvent.id}'>modify</button>
+    <div class="fb-share-button" data-href="https://github.com/hubba180/potluck-planner" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fhubba180%2Fpotluck-planner&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
     `);
 });
 

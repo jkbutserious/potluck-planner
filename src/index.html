@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
   <title>Potluck Planner</title>
+  <meta property="og:url"           content="https://hubba180.github.io/potluck-planner/" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="My Potluck Event" />
+  <meta property="og:description"   content="Come join me for a potluck meal!" />
+  <meta property="og:image"         content="./assets/IMG/potluck.jpg" />
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=728634131036318&autoLogAppEvents=1" nonce="8bZPhD6t"></script>
+
   <div id="overall-container">
     <div id="header-container">
       <div id="header-flex-container">
@@ -128,6 +136,9 @@
           <button id="update-event">Update</button>
           <button id="cancel-event">Cancel</button>
         </form>
+        <div class="fb-share-button" data-href="https://hubba180.github.io/potluck-planner/" data-layout="button" data-size="large">
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhubba180.github.io%2Fpotluck-planner%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+        </div>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ import { Event } from './eventObject.js';
 const userdb = new AggregateUsers();
 
 $(document).ready(function() {
-// TOP NAV LOADERS
+// NAV BAR LOADERS
   $('#home').click(function() {
     $("#overall-container").children().hide();
     addLoginDetails();
@@ -19,6 +19,7 @@ $(document).ready(function() {
     $("#landing-dashboard-overall-container").show();
     $("#header-container").show();
   });
+
   $('#user-profile').click(function() {
     $("#overall-container").children().hide();
     addLoginDetails();
@@ -27,6 +28,7 @@ $(document).ready(function() {
     $("#user-profile-overall-container").show();
     $("#header-container").show();
   });
+
   $('#add-event').click(function() {
     $("#overall-container").children().hide();
     $("#eventDate").val('');
@@ -37,13 +39,14 @@ $(document).ready(function() {
     $("#add-event-page").show();
     $("#header-container").show();
   });
+
   //$('#about').click(function() {
   //$("#overall-container").children().hide();
   //$("#landing-dashboard-overall-container").show();
   //$("#header-container").show();
   //});
 
-  // PAGE BUTTON LOADERS
+  // LOGIN / SIGN UP PAGE
   $('.login-button').click(function(event) {
     event.preventDefault();
     const login = $("#username").val();
@@ -151,7 +154,6 @@ $("#user-profile-recipe-list").on("click", "li", function(event){
     <button id='${userRecipe.id}-btn'>modify</button>
     `);
 });
-
 
 // NEW/MODIFY EVENT PAGE
 function addEventFields(user){
@@ -282,12 +284,10 @@ $('#cancel-user-update').click(function(event){
 });
 
 // Dashboard 
-
 function addDashboardDetails() {
   $("#all-users-list").empty();
   $("#all-events-list").empty();
   $("#your-events-list").empty();
-
   userdb.users.forEach(user => {
     if (user) {
       let userID = user.id;

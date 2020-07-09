@@ -70,8 +70,8 @@ $(document).ready(function() {
     $('#name').val('');
     $('#aboutMe').val('');
     $('#location').val('');
-    $('#user-profile-events-list').empty()
-    $('#user-profile-recipe-list').empty()
+    $('#user-profile-events-list').empty();
+    $('#user-profile-recipe-list').empty();
     $('#create-user').show();
     $('#cancel-user-create').show();
     $('#update-user').hide();
@@ -99,7 +99,7 @@ $('#modify-user').click(function(event){
 $('#delete-profile').click(function(event){
   event.preventDefault();
   let currentUser = userdb.users[userdb.currentUser];
-  userdb.deleteUser(currentUser.id)
+  userdb.deleteUser(currentUser.id);
   $('#main-container').show();
   $('#header-container').hide();
   $('#user-profile-overall-container').hide();
@@ -196,20 +196,24 @@ function addRecipeFields(user){
   $("#user-profile-recipe-list").empty();
   user.recipes.forEach(recipe => {
     $("#user-profile-recipe-list").append(`<li id=${recipe.id}>${recipe.name}</li>`);
-  })
+  });
+}
+
+function updateRecipeValues(recipe){
+  recipe.name = $('#recipe-name').val();
+  recipe.description = $('#recipe-description').val();
+  recipe.difficulty = $('#recipe-difficulty-level').val();
+  recipe.yield = $('#recipe-yield').val();
+  recipe.timeToCook = $('#recipe-time').val();
+  recipe.ingredients = $('#recipe-ingredients').val();
+  recipe.instructions = $('#recipe-steps').val();
 }
 
 $('#create-recipe').click(function(event){
   event.preventDefault();
   const userDetails = userdb.users[userdb.currentUser];
   const newRecipe = new Recipe();
-  newRecipe.name = $('#recipe-name').val();
-  newRecipe.description = $('#recipe-description').val();
-  newRecipe.difficulty = $('#recipe-difficulty-level').val();
-  newRecipe.yield = $('#recipe-yield').val();
-  newRecipe.timeToCook = $('#recipe-time').val();
-  newRecipe.ingredients = $('#recipe-ingredients').val();
-  newRecipe.instructions = $('#recipe-steps').val();
+  updateRecipeValues(newRecipe);
   userDetails.addRecipe(newRecipe);
   addRecipeFields(userDetails);
   $('#add-recipe-overall-container').hide();
@@ -220,13 +224,7 @@ $('#update-recipe').click(function(event){
   event.preventDefault();
   const userDetails = userdb.users[userdb.currentUser];
   const recipeToUpdate = userDetails.recipes[parseInt($('#recipeID').text())];
-  recipeToUpdate.name = $('#recipe-name').val();
-  recipeToUpdate.description = $('#recipe-description').val();
-  recipeToUpdate.difficulty = $('#recipe-difficulty-level').val();
-  recipeToUpdate.yield = $('#recipe-yield').val();
-  recipeToUpdate.timeToCook = $('#recipe-time').val();
-  recipeToUpdate.ingredients = $('#recipe-ingredients').val();
-  recipeToUpdate.instructions = $('#recipe-steps').val();
+  updateRecipeValues(recipeToUpdate);
   addRecipeFields(userDetails);
   $('#add-recipe-overall-container').hide();
   $('#user-profile-overall-container').show();

@@ -5,13 +5,13 @@ export class User {
     this.events = [];
     this.aboutMe = aboutMe;
     this.location = location;
-    this.currentRecipeId = 0;
-    this.currentEventId = 0;
+    this.currentRecipeId = -1;
+    this.currentEventId = -1;
   }
 
   addRecipe(recipe){
     recipe.id = this.assignRecipeId();
-    this.recipes.push(recipe)
+    this.recipes.push(recipe);
   }
 
   assignRecipeId(){
@@ -27,7 +27,7 @@ export class User {
           return true;
         }
       }
-    };
+    }
     return false;
   }
 
@@ -49,7 +49,7 @@ export class User {
           return true;
         }
       }
-    };
+    }
     return false;
   }
 }

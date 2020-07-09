@@ -2,25 +2,166 @@
 <html lang="en">
 <head>
   <title>Potluck Planner</title>
+  <meta property="og:url"           content="https://hubba180.github.io/potluck-planner/" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="My Potluck Event" />
+  <meta property="og:description"   content="Come join me for a potluck meal!" />
+  <meta property="og:image"         content="./assets/IMG/potluck.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=476675579110595";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
   <div id="overall-container">
     <div id="header-container">
-      <h1>Potluck Planner</h1>
-      <a id="home" class="active">Home</a>
-      <a id="user-profile">My Profile</a>
-      <a id="add-event">Add Event</a>
-      <a id="about">About</a>
+      <div id="header-flex-container">
+        <h1>Potluck Planner</h1>
+        <div id="white-space"></div>
+        <div id="nav-buttons">
+          <a id="home" class="active">Home</a>
+          <a id="user-profile">My Profile</a>
+          <a id="add-event">Add Event</a>
+        </div>
+      </div>
     </div>
 
-    <div id="content-container">
-      <div id="main-container">
-        <h4>Login:</h4>
-        <form id="login-page-form">
-          <input type="text" placeholder="Name" id="username">
+    <div id="main-container">
+      <h1>Potluck Planner</h1>
+      <form id="login-page-form">
+        <!-- <input type="text" placeholder="Name" id="username"> -->
+        <div id="not-valid-user"><!--Im sorry no account matches that username, please create a new account-->AN OUTSIDER! This is a private event, you must undergo the rite of initiation (create an account) or leave!</div>
+        <div id="login-button-div">
           <button class="login-button">login</button>
-          <div id="not-valid-user"><!--Im sorry no account matches that username, please create a new account-->AN OUTSIDER! This is a private event, you must undergo the rite of initiation (create an account) or leave!</div>
           <button class="join-button">join</button>
+        </div>
+      </form>
+    </div>
+    
+    <div id="new-user-overall-container">
+      <div id="new-user-flex">
+        <form id="new-user-form">
+          <h4>Sign up!</h4>
+          <input type="text" id="name" placeholder="Name"><br>
+          <input type="text" id="aboutMe" placeholder="About Me"><br>
+          <input type="text" id="location" placeholder="Where do you live?"><br>
+          <button id="create-user">Join</button>
+          <button id="update-user">Update</button>
+          <button id="cancel-user-update">Cancel</button>
+          <button id="cancel-user-create">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+<div id="user-profile-overall-container">
+  <div id="user-profile-flex">
+    <div id="user-profile-bg">
+        <div id="user-profile-white-bg">
+        <p>Name: <span id="user-profile-name"></span></p>
+        <p>About Me: <span id="user-profile-about-me"></span></p>
+        <p>Location: <span id="user-profile-location"></span></p>
+        <div id="user-profile-recipes-container">
+          <p>Recipes:</p>
+          <ul id="user-profile-recipe-list">
+          </ul>
+        </div>
+        <div id="user-profile-events-container">
+          <p>My Events:</p>
+          <ul id="user-profile-events-list">
+          </ul>
+        </div>
+        <button id="add-new-recipe">New Recipe</button>
+        <button id="modify-user">Modify Profile</button>
+        <button id="delete-profile">Delete Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div id="landing-dashboard-overall-container">
+      <div id="map">
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY_HERE&callback=initMap">
+        </script>
+        <script>
+          function initMap() {
+            var portland = {lat: 45.524502, lng: -122.671040};
+            var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 10, center: portland});
+            var marker = new google.maps.Marker({position: portland, map: map});
+          }
+        </script>
+      </div>
+      <div id="landing-dashboard-grid">
+        <!-- <div id="dashboard-header">
+          <h4>Your Dashboard</h4>
+        </div> -->
+      
+        <div id="all-users-container">
+          <h4>Users</h4>
+          <ul id="all-users-list"></ul>
+        </div>
+      
+        <div id="all-events-container">
+            <h4>All Events</h4>
+            <ul id="all-events-list"></ul>
+        </div>
+        
+        <div id="your-events">
+          <h4>Your Events</h4>
+          <ul id="your-events-list"></ul>
+        </div>
+      </div>
+      
+    </div>
+
+
+    <div id="add-recipe-overall-container">
+      <div id="add-recipe-flex">
+        <form>
+          <h2>Add Recipe</h2>
+          <p>Enter your recipe details below to save your new recipe to your profile:</p>
+          <input type="text" id="recipe-name" placeholder="Recipe name">
+          <input type="text" id="recipe-description" placeholder="Short Description">
+          <p>How difficult is this recipe? 1 (easy) to 5 (difficult)</p>
+          <select name="difficulty-level" id="recipe-difficulty-level">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select><br>
+          <input type="text" id="recipe-yield" placeholder="Yield">
+          <input type="text" id="recipe-time" placeholder="Total time required">
+          <input type="text" id="recipe-ingredients" placeholder="Enter a list of ingredients here"> 
+          <input type="text" id="recipe-steps" placeholder="Enter your recipe here">
+          <div id="recipeID"></div>
+          <button id="create-recipe">Save my recipe!</button>
+          <button id="update-recipe">Update</button>
+          <button id="cancel-recipe">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="add-event-page">
+      <div id="add-event-flex-container">
+        <h4>Enter your event details below</h4>
+        <form id="new-event-form">
+          <!-- <label for="eventDate">Event Date:</label><br> -->
+          <input type="date" id="eventDate" placeholder="event date">
+          <input type="text" id="eventName" placeholder="Event Name">
+          <input type="text" id="eventLocation" placeholder="Event Location">
+          <input type="text" id="eventDesc" placeholder="Event Description">
+          <div id="eventID"></div>
+          <button id="create-event">Create</button>
+          <button id="update-event">Update</button>
+          <button id="cancel-event">Cancel</button>
         </form>
       </div>
     </div>

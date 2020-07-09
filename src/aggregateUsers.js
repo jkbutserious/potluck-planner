@@ -1,7 +1,8 @@
 export class AggregateUsers {
   constructor() {
     this.users = [];
-    this.currentId = 0;
+    this.currentId = -1;
+    this.currentUser = null;
   }
 
   addUser(user) {
@@ -22,7 +23,7 @@ export class AggregateUsers {
           return true;
         }
       }
-    };
+    }
     return false;
   }
 }

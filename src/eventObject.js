@@ -1,9 +1,9 @@
 export class Event {
-  constructor(eventName, desc, location, dateTime) {
-    this.eventName = eventName
+  constructor(name, desc, location, date) {
+    this.eventName = name;
     this.desc = desc;
     this.location = location;
-    this.dateTime = dateTime;
+    this.dateTime = date;
     this.attendees = [];
   }
 
@@ -19,7 +19,7 @@ export class Event {
           return true;
         }
       }
-    };
+    }
     return false;
   }
 }

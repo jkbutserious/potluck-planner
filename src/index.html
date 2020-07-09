@@ -6,72 +6,88 @@
 <body>
   <div id="overall-container">
     <div id="header-container">
-      <h1>Potluck Planner</h1>
-      <a id="home" class="active">Home</a>
-      <a id="user-profile">My Profile</a>
-      <a id="add-event">Add Event</a>
-      <!-- <a id="about">About</a> -->
+      <div id="header-flex-container">
+        <h1>Potluck Planner</h1>
+        <div id="white-space"></div>
+        <div id="nav-buttons">
+          <a id="home" class="active">Home</a>
+          <a id="user-profile">My Profile</a>
+          <a id="add-event">Add Event</a>
+        </div>
+      </div>
     </div>
 
     <div id="main-container">
-      <h4>Login:</h4>
+      <h1>Potluck Planner</h1>
       <form id="login-page-form">
-        <input type="text" placeholder="Name" id="username">
-        <button class="login-button">login</button>
+        <!-- <input type="text" placeholder="Name" id="username"> -->
         <div id="not-valid-user"><!--Im sorry no account matches that username, please create a new account-->AN OUTSIDER! This is a private event, you must undergo the rite of initiation (create an account) or leave!</div>
+        <button class="login-button">login</button>
         <button class="join-button">join</button>
       </form>
     </div>
     
     <div id="new-user-overall-container">
-      <form>
-        <input type="text" id="name" placeholder="Name">
-        <input type="text" id="aboutMe" placeholder="About Me">
-        <input type="text" id="location" placeholder="Where do you live?">
-        <button id="create-user">Join</button>
-        <button id="update-user">Update</button>
-        <button id="cancel-user-update">Cancel</button>
-        <button id="cancel-user-create">Cancel</button>
-      </form>
+      <div id="new-user-flex">
+        <form id="new-user-form">
+          <h4>Sign up!</h4>
+          <input type="text" id="name" placeholder="Name"><br>
+          <input type="text" id="aboutMe" placeholder="About Me"><br>
+          <input type="text" id="location" placeholder="Where do you live?"><br>
+          <button id="create-user">Join</button>
+          <button id="update-user">Update</button>
+          <button id="cancel-user-update">Cancel</button>
+          <button id="cancel-user-create">Cancel</button>
+        </form>
+      </div>
     </div>
 
     <div id="user-profile-overall-container">
-      <p>Name: <span id="user-profile-name"></span></p>
-      <p>About Me: <span id="user-profile-about-me"></span></p>
-      <p>Location: <span id="user-profile-location"></span></p>
-      <div id="user-profile-recipes-container">
-        <p>Recipes:</p>
-        <ul id="user-profile-recipe-list">
-        </ul>
+      <div id="user-profile-flex">
+        <div id="user-profile-bg">
+          <div id="user-profile-white-bg">
+            <p>Name: <span id="user-profile-name"></span></p>
+            <p>About Me: <span id="user-profile-about-me"></span></p>
+            <p>Location: <span id="user-profile-location"></span></p>
+            <div id="user-profile-recipes-container">
+              <p>Recipes:</p>
+              <ul id="user-profile-recipe-list">
+              </ul>
+            </div>
+            <div id="user-profile-events-container">
+              <p>My Events</p>
+              <ul id="user-profile-events-list">
+              </ul>
+            </div>
+            <button id="modify-user">Modify Profile</button>
+          </div>
+        </div>
       </div>
-      <div id="user-profile-events-container">
-        <p>My Events</p>
-        <ul id="user-profile-events-list">
-        </ul>
-      </div>
-      <button id="modify-user">Modify Profile</button>
     </div>
 
     <div id="landing-dashboard-overall-container">
-      <h4>Your Dashboard</h4>
-    
-      <div id="all-users-container">
-        <h4>Users</h4>
-        <ul id="all-users-list"></ul>
+      <div id="landing-dashboard-grid">
+        <!-- <div id="dashboard-header">
+          <h4>Your Dashboard</h4>
+        </div> -->
+      
+        <div id="all-users-container">
+          <h4>Users</h4>
+          <ul id="all-users-list"></ul>
+        </div>
+      
+        <div id="all-events-container">
+            <h4>All Events</h4>
+            <ul id="all-events-list"></ul>
+        </div>
+        
+        <div id="your-events">
+          <h4>Your Events</h4>
+          <ul id="your-events-list"></ul>
+        </div>
       </div>
-    
-      <div id="all-events-container">
-        <h4>All Events</h4>
-        <ul id="all-events-list"></ul>
-      </div>
-    
-      <div id="your-events">
-        <h4>Your Events</h4>
-        <ul id="your-events-list"></ul>
-      </div>
-    
-      <button id="your-profile-button">Your profile:</button>
     </div>
+
 
     <div id="add-recipe-overall-container">
       <form>
@@ -99,18 +115,20 @@
     </div>
 
     <div id="add-event-page">
-      <h4>Enter your event details below</h4>
-      <form id="new-event-form">
-        <label for="eventDate">Event Date:</label>
-        <input type="date" id="eventDate">
-        <input type="text" id="eventName" placeholder="Event Name">
-        <input type="text" id="eventLocation" placeholder="Event Location">
-        <input type="text" id="eventDesc" placeholder="Event Description">
-        <div id="eventID"></div>
-        <button id="create-event">Create</button>
-        <button id="update-event">Update</button>
-        <button id="cancel-event">Cancel</button>
-      </form>
+      <div id="add-event-flex-container">
+        <h4>Enter your event details below</h4>
+        <form id="new-event-form">
+          <label for="eventDate">Event Date:</label>
+          <input type="date" id="eventDate" placeholder="event date">
+          <input type="text" id="eventName" placeholder="Event Name">
+          <input type="text" id="eventLocation" placeholder="Event Location">
+          <input type="text" id="eventDesc" placeholder="Event Description">
+          <div id="eventID"></div>
+          <button id="create-event">Create</button>
+          <button id="update-event">Update</button>
+          <button id="cancel-event">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
 </body>

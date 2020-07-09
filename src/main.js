@@ -146,11 +146,11 @@ $("#user-profile-recipe-list").on("click", "li", function(event){
   let userRecipe = user.recipes[recipeID];
   $(this).html(`${userRecipe.name}
     <p>Description: ${userRecipe.description}</p><br>
-    <p>Location: ${userRecipe.difficulty}</p><br>
+    <p>Difficulty: ${userRecipe.difficulty}</p><br>
     <p>Yield: ${userRecipe.yield}</p><br>
     <p>Time to Cook: ${userRecipe.timeToCook}</p><br>
     <p>Ingredients: ${userRecipe.ingredients}</p><br>
-    <p>instructions: ${userRecipe.instructions}</p><br>
+    <p>Instructions: ${userRecipe.instructions}</p><br>
     <button id='${userRecipe.id}-btn'>modify</button>
     `);
 });

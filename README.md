@@ -82,6 +82,7 @@ This program will allow users to:
 3.  On your homescreen open up your preferred terminal - GitBash recommended - and clone the file to your desktop. If you are using GitBash the command is:
 
   ```$ git clone https://github.com/hubba180/potluck-planner.git```
+  
 4.  All users will need to grab a google maps API key, see https://developers.google.com/maps/documentation/javascript/get-api-key for instructions
 5.  Add your unique API key to url address on line 90 in index.html where it says "INSERT_API_KEY_HERE"
 6.  Navigate your terminal into the root directory of the project and execute the command ```$ npm install```

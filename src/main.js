@@ -59,13 +59,33 @@ $(document).ready(function() {
   $('.join-button').click(function(event) {
     event.preventDefault();
     $('#new-user-overall-container').show();
+    $('#new-user-form h4').text("Sign up!");
+    $('#name').val('');
+    $('#aboutMe').val('');
+    $('#location').val('');
+    $('#create-user').show();
+    $('#cancel-user-create').show();
+    $('#update-user').hide();
+    $('#cancel-user-update').hide();
     $('#main-container').hide();
   });
-
-  // LANDING DASHBOARD
-  //$('#landing-dashboard-overall-container').hide();
-  //$('#user-profile-overall-container').show();
 });
+
+//USER PROFILE PAGE
+$('#modify-user').click(function(event){
+  event.preventDefault()
+  let currentUser = userdb.users[userdb.currentUser]
+  $('#new-user-overall-container').show();
+  $('#new-user-form h4').text("Update User Profile");
+  $('#name').val(currentUser.name);
+  $('#aboutMe').val(currentUser.aboutMe);
+  $('#location').val(currentUser.location);
+  $('#create-user').hide();
+  $('#cancel-user-create').hide();
+  $('#update-user').show();
+  $('#cancel-user-update').show();
+  $('#user-profile-overall-container').hide();
+})
 
 
 // NEW/MODIFY EVENT PAGE
@@ -220,7 +240,7 @@ function addDashboardDetails() {
 
 $("#all-events-list").on("click", "li", function(event){
   event.preventDefault();
-  $("#all-events-list li").children().hide();
+  $("#all-events-list li").children().empty();
   let rawID = $(this).attr('id');
   let userID = idSplit(rawID)[0];
   let eventID = idSplit(rawID)[1];

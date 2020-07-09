@@ -106,7 +106,7 @@ $('#add-new-recipe').click(function(event){
 
 $("#user-profile-events-list").on("click", "li", function(event){
   event.preventDefault();
-  $("#user-profile-events-list li").children().empty();
+  $("#user-profile-events-list li").children().hide();
   let eventID = $(this).attr('id');
   let user = userdb.users[userdb.currentUser];
   let userEvent = user.events[idSplit(eventID)[0]];
@@ -117,6 +117,24 @@ $("#user-profile-events-list").on("click", "li", function(event){
     <button id='${userEvent.id},prof'>modify</button>
     `);
 });
+
+$("#user-profile-recipe-list").on("click", "li", function(event){
+  event.preventDefault();
+  $("#user-profile-recipe-list li").children().hide();
+  let recipeID = $(this).attr('id');
+  let user = userdb.users[userdb.currentUser];
+  let userRecipe = user.recipes[recipeID];
+  $(this).html(`${userRecipe.name}
+    <p>Description: ${userRecipe.description}</p><br>
+    <p>Location: ${userRecipe.difficulty}</p><br>
+    <p>Yield: ${userRecipe.yield}</p><br>
+    <p>Time to Cook: ${userRecipe.timeToCook}</p><br>
+    <p>Ingredients: ${userRecipe.ingredients}</p><br>
+    <p>instructions: ${userRecipe.instructions}</p><br>
+    <button id='${userRecipe.id}-btn'>modify</button>
+    `);
+});
+
 
 // NEW/MODIFY EVENT PAGE
 function addEventFields(user){
@@ -271,7 +289,7 @@ function addDashboardDetails() {
 
 $("#all-events-list").on("click", "li", function(event){
   event.preventDefault();
-  $("#all-events-list li").children().empty();
+  $("#all-events-list li").children().hide();
   let rawID = $(this).attr('id');
   let userID = idSplit(rawID)[0];
   let eventID = idSplit(rawID)[1];
@@ -287,7 +305,7 @@ $("#all-events-list").on("click", "li", function(event){
 
 $("#your-events-list").on("click", "li", function(event){
   event.preventDefault();
-  $("#your-events-list li").children().empty();
+  $("#your-events-list li").children().hide();
   let eventID = $(this).attr('id');
   let user = userdb.users[userdb.currentUser];
   let userEvent = user.events[eventID];
@@ -309,7 +327,7 @@ function idSplit(id){
   }
 }
 
-$("#all-events-list li").on("click", "button", function(event){
+$("#all-events-list li button").on("click", function(event){
   event.preventDefault();
   let rawID = $(this).attr('id');
   let userID = idSplit(rawID)[0];

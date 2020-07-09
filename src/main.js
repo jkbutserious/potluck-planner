@@ -13,11 +13,17 @@ $(document).ready(function() {
 // TOP NAV LOADERS
   $('#home').click(function() {
     $("#overall-container").children().hide();
+    addLoginDetails();
+    addDashboardDetails();
+    addRecipeFields(userdb.users[userdb.currentUser]);
     $("#landing-dashboard-overall-container").show();
     $("#header-container").show();
   });
   $('#user-profile').click(function() {
     $("#overall-container").children().hide();
+    addLoginDetails();
+    addDashboardDetails();
+    addRecipeFields(userdb.users[userdb.currentUser]);
     $("#user-profile-overall-container").show();
     $("#header-container").show();
   });
@@ -64,6 +70,8 @@ $(document).ready(function() {
     $('#name').val('');
     $('#aboutMe').val('');
     $('#location').val('');
+    $('#user-profile-events-list').empty()
+    $('#user-profile-recipe-list').empty()
     $('#create-user').show();
     $('#cancel-user-create').show();
     $('#update-user').hide();
@@ -85,6 +93,15 @@ $('#modify-user').click(function(event){
   $('#cancel-user-create').hide();
   $('#update-user').show();
   $('#cancel-user-update').show();
+  $('#user-profile-overall-container').hide();
+});
+
+$('#delete-profile').click(function(event){
+  event.preventDefault();
+  let currentUser = userdb.users[userdb.currentUser];
+  userdb.deleteUser(currentUser.id)
+  $('#main-container').show();
+  $('#header-container').hide();
   $('#user-profile-overall-container').hide();
 });
 
@@ -274,12 +291,14 @@ function addDashboardDetails() {
   $("#your-events-list").empty();
 
   userdb.users.forEach(user => {
-    let userID = user.id;
-    $("#all-users-list").append(`<li>${user.name}</li>`);
-    user.events.forEach(event => {
-      let uniqueID = userID + "-" + event.id;
-      $("#all-events-list").append(`<li id='${uniqueID}'>${event.eventName}</li>`);
-    });
+    if (user) {
+      let userID = user.id;
+      $("#all-users-list").append(`<li>${user.name}</li>`);
+      user.events.forEach(event => {
+        let uniqueID = userID + "-" + event.id;
+        $("#all-events-list").append(`<li id='${uniqueID}'>${event.eventName}</li>`);
+      });
+    }
   });
   const ourUser = userdb.users[userdb.currentId];
   ourUser.events.forEach(userEvent => {

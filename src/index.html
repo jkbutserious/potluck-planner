@@ -85,6 +85,19 @@
 </div>
 
     <div id="landing-dashboard-overall-container">
+      <div id="map">
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY_HERE&callback=initMap">
+        </script>
+        <script>
+          function initMap() {
+            var portland = {lat: 45.524502, lng: -122.671040};
+            var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 10, center: portland});
+            var marker = new google.maps.Marker({position: portland, map: map});
+          }
+        </script>
+      </div>
       <div id="landing-dashboard-grid">
         <!-- <div id="dashboard-header">
           <h4>Your Dashboard</h4>

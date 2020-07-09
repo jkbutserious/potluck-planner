@@ -40,6 +40,11 @@ input {
   margin-top: 2em;
 }
 
+#map {
+  height: 300px;
+  width: 100%;
+}
+
 #not-valid-user {
   color: #050611;
   background-color: rgba(255, 255, 255, .7);

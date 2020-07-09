@@ -27,6 +27,7 @@ $(document).ready(function() {
     $("#eventName").val('');
     $("#eventLocation").val('');
     $("#eventDesc").val('');
+    $("#update-event").hide();
     $("#add-event-page").show();
     $("#header-container").show();
   });
@@ -59,21 +60,89 @@ $(document).ready(function() {
   $('.join-button').click(function(event) {
     event.preventDefault();
     $('#new-user-overall-container').show();
+    $('#new-user-form h4').text("Sign up!");
+    $('#name').val('');
+    $('#aboutMe').val('');
+    $('#location').val('');
+    $('#create-user').show();
+    $('#cancel-user-create').show();
+    $('#update-user').hide();
+    $('#cancel-user-update').hide();
     $('#main-container').hide();
   });
+});
 
-  // LANDING DASHBOARD
-  //$('#landing-dashboard-overall-container').hide();
-  //$('#user-profile-overall-container').show();
+//USER PROFILE PAGE
+$('#modify-user').click(function(event){
+  event.preventDefault();
+  let currentUser = userdb.users[userdb.currentUser];
+  $('#new-user-overall-container').show();
+  $('#new-user-form h4').text("Update User Profile");
+  $('#name').val(currentUser.name);
+  $('#aboutMe').val(currentUser.aboutMe);
+  $('#location').val(currentUser.location);
+  $('#create-user').hide();
+  $('#cancel-user-create').hide();
+  $('#update-user').show();
+  $('#cancel-user-update').show();
+  $('#user-profile-overall-container').hide();
+});
+
+$('#add-new-recipe').click(function(event){
+  event.preventDefault();
+  $('#add-recipe-overall-container').show();
+  $('#recipe-name').val('');
+  $('#recipe-description').val('');
+  $('#recipe-yield').val('');
+  $('#recipe-time').val('');
+  $('#recipe-ingredients').val('');
+  $('#recipe-steps').val('');
+  $('#recipeID').text('');
+  $('#create-recipe').show();
+  $('#cancel-recipe').show();
+  $('#update-recipe').hide();
+  $('#user-profile-overall-container').hide();
+});
+
+$("#user-profile-events-list").on("click", "li", function(event){
+  event.preventDefault();
+  $("#user-profile-events-list li").children().hide();
+  let eventID = $(this).attr('id');
+  let user = userdb.users[userdb.currentUser];
+  let userEvent = user.events[idSplit(eventID)[0]];
+  $(this).html(`${userEvent.eventName}
+    <p>Description: ${userEvent.desc}</p><br>
+    <p>Location: ${userEvent.location}</p><br>
+    <p>Date: ${userEvent.dateTime}</p>
+    <button id='${userEvent.id},prof'>modify</button>
+    `);
+});
+
+$("#user-profile-recipe-list").on("click", "li", function(event){
+  event.preventDefault();
+  $("#user-profile-recipe-list li").children().hide();
+  let recipeID = $(this).attr('id');
+  let user = userdb.users[userdb.currentUser];
+  let userRecipe = user.recipes[recipeID];
+  $(this).html(`${userRecipe.name}
+    <p>Description: ${userRecipe.description}</p><br>
+    <p>Location: ${userRecipe.difficulty}</p><br>
+    <p>Yield: ${userRecipe.yield}</p><br>
+    <p>Time to Cook: ${userRecipe.timeToCook}</p><br>
+    <p>Ingredients: ${userRecipe.ingredients}</p><br>
+    <p>instructions: ${userRecipe.instructions}</p><br>
+    <button id='${userRecipe.id}-btn'>modify</button>
+    `);
 });
 
 
 // NEW/MODIFY EVENT PAGE
-function addEventFields(){
+function addEventFields(user){
   $("#user-profile-events-list").empty();
-  $('#your-events-list').empty();
-  $('#all-events-list').empty();
   addDashboardDetails();
+  user.events.forEach(userEvent => {
+    $("#user-profile-events-list").append(`<li id='${userEvent.id}-prof'>${userEvent.eventName}</li>`);
+  });
 }
 
 $('#create-event').click(function(event){
@@ -81,7 +150,7 @@ $('#create-event').click(function(event){
   const userDetails = userdb.users[userdb.currentUser];
   const newEvent = new Event($('#eventName').val(), $('#eventDesc').val(), $('#eventLocation').val(), $('#eventDate').val());
   userDetails.addEvent(newEvent);
-  addEventFields();
+  addEventFields(userDetails);
   $('#add-event-page').hide();
   $('#landing-dashboard-overall-container').show();
 });
@@ -94,7 +163,7 @@ $('#update-event').click(function(event){
   eventToUpdate.desc = $('#eventDesc').val();
   eventToUpdate.location = $('#eventLocation').val();
   eventToUpdate.dateTime = $('#eventDate').val();
-  addEventFields();
+  addEventFields(userDetails);
   $('#add-event-page').hide();
   $('#landing-dashboard-overall-container').show();
 });
@@ -109,8 +178,8 @@ $('#cancel-event').click(function(event){
 function addRecipeFields(user){
   $("#user-profile-recipe-list").empty();
   user.recipes.forEach(recipe => {
-    $("#user-profile-recipe-list").append(`<li>${recipe}</li>`);
-  });
+    $("#user-profile-recipe-list").append(`<li id=${recipe.id}>${recipe.name}</li>`);
+  })
 }
 
 $('#create-recipe').click(function(event){
@@ -236,7 +305,7 @@ $("#all-events-list").on("click", "li", function(event){
 
 $("#your-events-list").on("click", "li", function(event){
   event.preventDefault();
-  $("#your-events-list li").children().empty();
+  $("#your-events-list li").children().hide();
   let eventID = $(this).attr('id');
   let user = userdb.users[userdb.currentUser];
   let userEvent = user.events[eventID];
@@ -258,7 +327,7 @@ function idSplit(id){
   }
 }
 
-$("#all-events-list li").on("click", "button", function(event){
+$("#all-events-list li button").on("click", function(event){
   event.preventDefault();
   let rawID = $(this).attr('id');
   let userID = idSplit(rawID)[0];

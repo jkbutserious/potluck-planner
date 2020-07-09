@@ -4,22 +4,36 @@ import './styles.css';
 import $ from 'jquery';
 import { AggregateUsers } from './aggregateUsers.js';
 import { User } from './user-object';
+import { Recipe } from './recipe-object.js';
+import { Event } from './eventObject.js';
 
 const userdb = new AggregateUsers();
 
 $(document).ready(function() {
 // TOP NAV LOADERS
   $('#home').click(function() {
-   // $('#content-container').load('landing-dashboard.html');
+    $("#overall-container").children().hide();
+    $("#landing-dashboard-overall-container").show();
+    $("#header-container").show();
   });
   $('#user-profile').click(function() {
-    //$('#content-container').load('user-profile.html');
+    $("#overall-container").children().hide();
+    $("#user-profile-overall-container").show();
+    $("#header-container").show();
   });
   $('#add-event').click(function() {
-    //$('#content-container').load('add-event-page.html');
+    $("#overall-container").children().hide();
+    $("#eventDate").val('');
+    $("#eventName").val('');
+    $("#eventLocation").val('');
+    $("#eventDesc").val('');
+    $("#add-event-page").show();
+    $("#header-container").show();
   });
-  //  $('#about').click(function() {
-  //  $('#content-container').load();
+  //$('#about').click(function() {
+  //$("#overall-container").children().hide();
+  //$("#landing-dashboard-overall-container").show();
+  //$("#header-container").show();
   //});
 
   // PAGE BUTTON LOADERS
@@ -49,34 +63,28 @@ $(document).ready(function() {
   });
 
   // LANDING DASHBOARD
-  $('#landing-dashboard-overall-container').hide();
-  $('#user-profile-overall-container').show();
+  //$('#landing-dashboard-overall-container').hide();
+  //$('#user-profile-overall-container').show();
 });
 
 
 // NEW/MODIFY EVENT PAGE
-function addEventFields(user){
+function addEventFields(){
   $("#user-profile-events-list").empty();
-  $('#your-events').empty();
-  user.events.forEach(event => {
-    $("#user-profile-event-list").append(`<li>${event}</li>`);
-    $("#your-events").append(`<li>${event}</li>`);
-  })
+  $('#your-events-list').empty();
+  $('#all-events-list').empty();
+  addDashboardDetails();
 }
 
 $('#create-event').click(function(event){
   event.preventDefault();
   const userDetails = userdb.users[userdb.currentUser];
-  const newEvent = new Event();
-  newEvent.eventName = $('#eventName').val();
-  newEvent.desc = $('#eventDesc').val();
-  newEvent.location = $('#eventLocation').val();
-  newEvent.dateTime = $('#eventDate').val();
+  const newEvent = new Event($('#eventName').val(), $('#eventDesc').val(), $('#eventLocation').val(), $('#eventDate').val());
   userDetails.addEvent(newEvent);
-  addEventFields(userDetails);
+  addEventFields();
   $('#add-event-page').hide();
   $('#landing-dashboard-overall-container').show();
-})
+});
 
 $('#update-event').click(function(event){
   event.preventDefault();
@@ -86,23 +94,23 @@ $('#update-event').click(function(event){
   eventToUpdate.desc = $('#eventDesc').val();
   eventToUpdate.location = $('#eventLocation').val();
   eventToUpdate.dateTime = $('#eventDate').val();
-  addEventFields(userDetails);
+  addEventFields();
   $('#add-event-page').hide();
   $('#landing-dashboard-overall-container').show();
-})
+});
 
 $('#cancel-event').click(function(event){
   event.preventDefault();
   $('#add-event-page').hide();
   $('#landing-dashboard-overall-container').show();
-})
+});
 
 // NEW/MODIFY RECIPE PAGE
 function addRecipeFields(user){
   $("#user-profile-recipe-list").empty();
   user.recipes.forEach(recipe => {
     $("#user-profile-recipe-list").append(`<li>${recipe}</li>`);
-  })
+  });
 }
 
 $('#create-recipe').click(function(event){
@@ -120,7 +128,7 @@ $('#create-recipe').click(function(event){
   addRecipeFields(userDetails);
   $('#add-recipe-overall-container').hide();
   $('#user-profile-overall-container').show();
-})
+});
 
 $('#update-recipe').click(function(event){
   event.preventDefault();
@@ -136,13 +144,13 @@ $('#update-recipe').click(function(event){
   addRecipeFields(userDetails);
   $('#add-recipe-overall-container').hide();
   $('#user-profile-overall-container').show();
-})
+});
 
 $('#cancel-recipe').click(function(event){
   event.preventDefault();
   $('#add-recipe-overall-container').hide();  
   $('#user-profile-overall-container').show();
-})
+});
 
 // NEW/MODIFY USER PAGE
 function addLoginDetails() {
@@ -165,7 +173,7 @@ $('#create-user').click(function(event) {
   $("#header-container").show();
   $('#new-user-overall-container').hide();
   $('#user-profile-overall-container').show();
-})
+});
 
 $('#update-user').click(function(event) {
   event.preventDefault();
@@ -175,44 +183,94 @@ $('#update-user').click(function(event) {
   addLoginDetails();
   $('#new-user-overall-container').hide();
   $('#user-profile-overall-container').show();
-})
+});
 
 $('#cancel-user-create').click(function(event){
   event.preventDefault();
   $('#new-user-overall-container').hide();  
   $('#main-container').show();
-})
+});
 
 $('#cancel-user-update').click(function(event){
   event.preventDefault();
   $('#new-user-overall-container').hide();  
   $('#user-profile-overall-container').show();
-})
+});
 
 // Dashboard 
 
 function addDashboardDetails() {
-  userdb.users.forEach(element => {
-    let i = 0;
-    element.events.forEach(userEvent => {
-      $("#all-events-list").append(`<li id='${i++}'>${userEvent.name}</li>
-      <div class='collapsed-event' id="${}">
-        <p>Description: ${userEvent.desc}</p><br>
-        <p>Location: ${userEvent.location}</p><br>
-        <p>Date: ${userEvent.date}</p>`)
+  $("#all-users-list").empty();
+  $("#all-events-list").empty();
+  $("#your-events-list").empty();
+
+  userdb.users.forEach(user => {
+    let userID = user.id;
+    $("#all-users-list").append(`<li>${user.name}</li>`);
+    user.events.forEach(event => {
+      let uniqueID = userID + "-" + event.id;
+      $("#all-events-list").append(`<li id='${uniqueID}'>${event.eventName}</li>`);
     });
   });
-  userdb.users.forEach(element => {
-    $("#all-users-list").append(`<li>${element.name}</li>`)
-  });
   const ourUser = userdb.users[userdb.currentId];
-  ourUser.events.forEach(element => {
-    $("#your-events-list").append(`<li id='${element.id}'>${element.name}</li>`)
+  ourUser.events.forEach(userEvent => {
+    $("#your-events-list").append(`<li id='${userEvent.id}'>${userEvent.eventName}</li>`);
   });
 }
 
-function attachContactListeners() {
-  $("ul#all-events-list").on("click", "li", function() {
-    $(this).toggleClass('collapsed-event');
-  });
-};
+
+
+$("#all-events-list").on("click", "li", function(event){
+  event.preventDefault();
+  $("#all-events-list li").children().hide();
+  let rawID = $(this).attr('id');
+  let userID = idSplit(rawID)[0];
+  let eventID = idSplit(rawID)[1];
+  let user = userdb.users[userID];
+  let userEvent = user.events[eventID];
+  $(this).html(`${userEvent.eventName}
+    <p>Description: ${userEvent.desc}</p><br>
+    <p>Location: ${userEvent.location}</p><br>
+    <p>Date: ${userEvent.dateTime}</p>
+    <button id='${idSplit(rawID).join(',')}'>modify</button>
+    `);
+});
+
+$("#your-events-list").on("click", "li", function(event){
+  event.preventDefault();
+  $("#your-events-list li").children().empty();
+  let eventID = $(this).attr('id');
+  let user = userdb.users[userdb.currentUser];
+  let userEvent = user.events[eventID];
+  $(this).html(`${userEvent.eventName}
+    <p>Description: ${userEvent.desc}</p><br>
+    <p>Location: ${userEvent.location}</p><br>
+    <p>Date: ${userEvent.dateTime}</p>
+    <button id='${userEvent.id}'>modify</button>
+    `);
+});
+
+function idSplit(id){
+  if (id.includes("-")){
+    let idArray = id.split("-");
+    return idArray;
+  } else if (id.includes(",")){
+    let idArray = id.split(",");
+    return idArray;
+  }
+}
+
+$("#all-events-list li").on("click", "button", function(event){
+  event.preventDefault();
+  let rawID = $(this).attr('id');
+  let userID = idSplit(rawID)[0];
+  let eventID = idSplit(rawID)[1];
+  let eventToModify = userdb.users[userID].events[eventID];
+  $("#eventDate").val(eventToModify.dateTime);
+  $("#eventName").val(eventToModify.eventName);
+  $("#eventLocation").val(eventToModify.location);
+  $("#eventDesc").val(eventToModify.desc);
+  $("#eventID").text(eventID);
+  $("#landing-dashboard-overall-container").hide();
+  $("#add-event-page").show();
+});

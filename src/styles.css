@@ -5,10 +5,6 @@ button {
 
 }
 
-.collapsed-event {
-  display: none;
-}
-
 #not-valid-user {
   color: red;
   display: none;

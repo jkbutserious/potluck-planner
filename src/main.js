@@ -220,7 +220,7 @@ function addDashboardDetails() {
 
 $("#all-events-list").on("click", "li", function(event){
   event.preventDefault();
-  $("#all-events-list li").children().hide();
+  $("#all-events-list li").children().empty();
   let rawID = $(this).attr('id');
   let userID = idSplit(rawID)[0];
   let eventID = idSplit(rawID)[1];

@@ -10,7 +10,13 @@
 </head>
 <body>
   <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=728634131036318&autoLogAppEvents=1" nonce="8bZPhD6t"></script>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=476675579110595";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
   <div id="overall-container">
     <div id="header-container">
@@ -136,9 +142,6 @@
           <button id="update-event">Update</button>
           <button id="cancel-event">Cancel</button>
         </form>
-        <div class="fb-share-button" data-href="https://hubba180.github.io/potluck-planner/" data-layout="button" data-size="large">
-          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhubba180.github.io%2Fpotluck-planner%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-        </div>
       </div>
     </div>
   </div>

@@ -77,15 +77,16 @@ This program will allow users to:
 * _Optional: code editor - suggested VSCode-_
 
 #### Install
-1.  Navigate to my github repository at: https://github.com/potluck-planner_
+1.  Navigate to my github repository at: https://github.com/hubba180/potluck-planner_
 2.  Click the **Code** button and copy the ".git" link
-3.  On your homescreen open up your preferred terminal - GitBash recommended - and clone the file to your desktop. If you are using GitBash the command is :
+3.  On your homescreen open up your preferred terminal - GitBash recommended - and clone the file to your desktop. If you are using GitBash the command is:
 
   ```$ git clone https://github.com/hubba180/potluck-planner.git```
-
-4.  Navigate your terminal into the root directory of the project and execute the command ```$ npm install```
-5.  After installation is finished, execute the command ```$ npm run build```
-6.  Use the command ```$ npm run start``` to view the program
+4.  All users will need to grab a google maps API key, see https://developers.google.com/maps/documentation/javascript/get-api-key for instructions
+5.  Add your unique API key to url address on line 90 in index.html where it says "INSERT_API_KEY_HERE"
+6.  Navigate your terminal into the root directory of the project and execute the command ```$ npm install```
+7.  After installation is finished, execute the command ```$ npm run build```
+8.  Use the command ```$ npm run start``` to view the program
 
 ## Known Bugs
 _No known bugs_

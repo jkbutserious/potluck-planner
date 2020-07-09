@@ -1,11 +1,13 @@
-h1, h2, h3, h4, input, button, a, p, label{
-  font-family: 'recoleta';
+
+h2, h3, h4, input, button, a, p, label, div{
+  font-family: 'lora';
 }
 
 h1 {
   font-weight: 700;
   font-size: 4.5em;
   margin: 0;
+  font-family: 'recoleta';
 }
 
 button, input[type="text"]:focus, input[type="text"] {
@@ -39,7 +41,9 @@ input {
 }
 
 #not-valid-user {
-  color: white;
+  color: #050611;
+  background-color: rgba(255, 255, 255, .7);
+  padding: .5em;
   display: none;
 }
 
@@ -51,6 +55,12 @@ input {
   height: 100vh;
   align-items: center;
   justify-content: center;
+}
+
+#login-button-div {
+  display: flex;
+  justify-content: center;
+
 }
 
 #header-container,
@@ -122,13 +132,14 @@ input {
 
 #new-user-form {
   padding: 2em;
+  width: 40%;
   background-color: #dfdfdf;
 }
 
 /* user profile */
 
 #user-profile-flex {
-  height: 85vh;
+  min-height: 85vh;
   display: flex !important;
   flex-direction: column;
   align-items: center;
@@ -137,24 +148,27 @@ input {
 }
 
 #user-profile-bg {
-  width: 50vw;
-  height: 53\4vh;
+  width: 51vw;
+  max-height: 60vh;
   padding: 2em;
-  background-color: #dfdfdf;
+  background-color: #fefefe;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-#user-profile-white-bg {
+/* #user-profile-white-bg {
   width: 100%;
   background-color: white;
   /* height: 15em; */
-  padding: 1em 1em 1em 1em;
-}
+  /* padding: 1em 1em 1em 1em;
+} */ 
 
 #user-profile-flex button {
   margin: 2em .5em 0 .5em;
   color: #929191;
   border: 2px solid #929191;
   margin: 3em 0 1em 0;
+  margin: .5em;
 }
 
 #user-profile-flex button:hover {
@@ -172,19 +186,24 @@ input {
   align-items: center;
   justify-content: center;
   background-color: #ff605f;
+  padding: 1em
 }
 
 #add-event-flex-container button {
-  margin: 2em .5em 0 .5em;
+  /* margin: 2em .5em 0 .5em; */
   color: #050611;
   border: 2px solid #050611;
-  margin: 3em 0 1em 0;
+  margin: 3em 1em 0;
 }
 
 #add-event-flex-container button:hover {
   background-color: #ff605f;
   color: #fefefe;
   border: 2px solid #fefefe;
+}
+
+#add-event-flex-container input {
+  margin: .5em;
 }
 
 /* dashboard */
@@ -221,5 +240,26 @@ input {
 #your-events {
   grid-template-columns: 3;
   padding: 2em;
+}
+
+/* add recipe */
+
+#add-recipe-flex {
+  height: 85vh;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff605f;
+}
+
+#add-recipe-flex input{
+  margin: .5em;
+}
+
+#add-recipe-flex form{
+  padding: 2em;
+  width: 70%;
+  background-color: #fefefe;
 }
 
